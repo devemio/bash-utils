@@ -1,6 +1,6 @@
 # Bash Helpers
 
-To activate helpers you can use `source .tunnel`.
+To activate helpers you can use `source [helper]`.
 
 ## Tunnel
 
