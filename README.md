@@ -1,5 +1,7 @@
 # Bash Helpers
 
+To activate helpers, use `source .tunnel`.
+
 ## Tunnel
 
 * To show the list of active tunnels, use `tunnel ls`
