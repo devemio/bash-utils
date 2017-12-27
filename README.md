@@ -1,9 +1,9 @@
 # Bash Helpers
 
-To activate helpers, use `source .tunnel`.
+To activate helpers you can use `source .tunnel`.
 
 ## Tunnel
 
-* To show the list of active tunnels, use `tunnel ls`
-* To kill all active tunnels, use `tunnel kill`
-* To create tunnels, use `tunnel 13306:localhost:3306 root@example.com`
+* To show the list of active tunnels you can use `tunnel ls`
+* To kill all active tunnels you can use `tunnel kill`
+* To create tunnels you can use `tunnel 13306:localhost:3306 root@example.com`
