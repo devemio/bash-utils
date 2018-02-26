@@ -21,8 +21,7 @@ SSH_VERBOSE=""
 MYSQL_VERBOSE=""
 
 CMD=""
-
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename $0)
 
 # Help Screen
 help() {
