@@ -68,15 +68,6 @@ while [ "$1" != "" ]; do
     --remote-mysql-password) REMOTE_MYSQL_PWD=$VALUE ;;
     --remote-mysql-database) REMOTE_MYSQL_DB=$VALUE ;;
     --ssh-host) SSH_HOST=$VALUE ;;
-    # --ssh-user) SSH_USER=$VALUE ;;
-    # --ssh-port) SSH_PORT=$VALUE ;;
-    # --ssh-key) SSH_KEY=$VALUE ;;
-    # -c|--compress) COMPRESS=1 ;;
-    # -o|--output) OUTPUT=$VALUE ;;
-    # -e|--env) ENV=$VALUE ;;
-    # -f|--file-name) FILENAME=$VALUE ;;
-    # --prefix) PREFIX=$VALUE ;;
-    # --suffix) SUFFIX=$VALUE ;;
     -v|--verbose) VERBOSE=1 ;;
     -vv) VERBOSE=2 ;;
     *) echo "${red}ERROR: unknown parameter \"$PARAM\"${reset}"; help; exit 1 ;;
