@@ -2,14 +2,14 @@
 
 tunnel() {
     case "$1" in
-    ls)
-        ps aux | grep 'ssh -fNL' | grep -v 'exclude-dir' | awk '{print $13" "$14}' | uniq
-        ;;
-    kill)
-        ps aux | grep 'ssh -fNL' | grep -v 'exclude-dir' | awk '{print $2}' | xargs kill
-        ;;
-    *)
-        ssh -fNL $*
-        ;;
+        ls)
+            ps aux | grep 'ssh -fNL' | grep -v 'exclude-dir' | awk '{print $13" "$14}' | uniq
+            ;;
+        kill)
+            ps aux | grep 'ssh -fNL' | grep -v 'exclude-dir' | awk '{print $2}' | xargs kill
+            ;;
+        *)
+            ssh -fNL $*
+            ;;
     esac
 }
