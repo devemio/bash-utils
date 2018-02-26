@@ -23,29 +23,36 @@ MYSQL_VERBOSE=""
 CMD=""
 SCRIPT_NAME=$(basename $0)
 
-# Help Screen
-help() {
-  echo -n "Bash utility for pulling databases from remote hosts
+# Colors
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+reset=$(tput sgr0)
 
-Usage:
+# Help screen
+help() {
+    echo -n "${yellow}Usage:${reset}
   $SCRIPT_NAME [options]
 
-Options:
-  -h, --local-mysql-host       Database host on the local machine
-  -u, --local-mysql-user       Database user on the local machine
-  -p, --local-mysql-password   Database password on the local machine
-  -d, --local-mysql-database   Database name on the local machine
-      --remote-mysql-host      Database host on the remote machine
-      --remote-mysql-user      Database user on the remote machine
-      --remote-mysql-password  Database password on the remote machine
-      --remote-mysql-database  Database name on the remote machine
-      --ssh-host               SSH host
-      --help                   Display this help message
-  -v|vv, --verbose             Verbose output
+${yellow}Options:${reset}
+  ${green}-h, --local-mysql-host${reset}       Database host on the local machine ${yellow}[default: \"localhost\"]${reset}
+  ${green}-u, --local-mysql-user${reset}       Database user on the local machine ${yellow}[default: \"root\"]${reset}
+  ${green}-p, --local-mysql-password${reset}   Database password on the local machine
+  ${green}-d, --local-mysql-database${reset}   Database name on the local machine
+  ${green}    --remote-mysql-host${reset}      Database host on the remote machine ${yellow}[default: \"localhost\"]${reset}
+  ${green}    --remote-mysql-user${reset}      Database user on the remote machine ${yellow}[default: \"root\"]${reset}
+  ${green}    --remote-mysql-password${reset}  Database password on the remote machine
+  ${green}    --remote-mysql-database${reset}  Database name on the remote machine
+  ${green}    --ssh-host${reset}               SSH host
+  ${green}    --help${reset}                   Display this help message
+  ${green}-v|vv, --verbose${reset}             Verbose output
+
+${yellow}Help:${reset}
+  Bash utility for pulling databases from remote hosts
 "
 }
 
-# Process Arguments
+# Process arguments
 while [ "$1" != "" ]; do
   PARAM=`echo $1 | awk -F= '{print $1}'`
   VALUE=`echo $1 | awk -F= '{print $2}'`
@@ -71,7 +78,7 @@ while [ "$1" != "" ]; do
     # --suffix) SUFFIX=$VALUE ;;
     -v|--verbose) VERBOSE=1 ;;
     -vv) VERBOSE=2 ;;
-    *) echo "ERROR: unknown parameter \"$PARAM\""; help; exit 1 ;;
+    *) echo "${red}ERROR: unknown parameter \"$PARAM\"${reset}"; help; exit 1 ;;
   esac
   shift
 done
