@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Inspired by https://github.com/loganstellway/mysqldump-remote
+
 LOCAL_MYSQL_HOST="localhost"
 LOCAL_MYSQL_USER="root"
 LOCAL_MYSQL_PWD=""
@@ -20,12 +22,36 @@ MYSQL_VERBOSE=""
 
 CMD=""
 
+SCRIPT_NAME=`basename $0`
+
+# Help Screen
+help() {
+  echo -n "Bash utility for pulling databases from remote hosts
+
+Usage:
+  $SCRIPT_NAME [options]
+
+Options:
+  -h, --local-mysql-host       Database host on the local machine
+  -u, --local-mysql-user       Database user on the local machine
+  -p, --local-mysql-password   Database password on the local machine
+  -d, --local-mysql-database   Database name on the local machine
+      --remote-mysql-host      Database host on the remote machine
+      --remote-mysql-user      Database user on the remote machine
+      --remote-mysql-password  Database password on the remote machine
+      --remote-mysql-database  Database name on the remote machine
+      --ssh-host               SSH host
+      --help                   Display this help message
+  -v|vv, --verbose             Verbose output
+"
+}
+
 # Process Arguments
 while [ "$1" != "" ]; do
   PARAM=`echo $1 | awk -F= '{print $1}'`
   VALUE=`echo $1 | awk -F= '{print $2}'`
   case $PARAM in
-    # --help) help; safeExit ;;
+    --help) help; exit ;;
     -h|--local-mysql-host) LOCAL_MYSQL_HOST=$VALUE ;;
     -u|--local-mysql-user) LOCAL_MYSQL_USER=$VALUE ;;
     -p|--local-mysql-password) LOCAL_MYSQL_PWD=$VALUE ;;
