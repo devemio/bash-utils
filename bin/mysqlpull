@@ -118,12 +118,12 @@ prepare() {
 
 validate() {
   if [ -z $SSH_HOST ]; then
-    echo -n "SSH Host: "
+    echo -n "${green}SSH host:${reset} "
     read SSH_HOST
   fi
 
   if [ -z $LOCAL_MYSQL_DB ]; then
-    echo -n "MySQL Database: "
+    echo -n "${green}Database:${reset} "
     read LOCAL_MYSQL_DB
   fi
 }
@@ -137,9 +137,10 @@ run() {
   CMD="$SSH_CMD '$REMOTE_MYSQL_DUMP | gzip -c' | gunzip > $FILENAME"
   CMD="$CMD && $LOCAL_MYSQL_CONNECT -e 'DROP DATABASE IF EXISTS $LOCAL_MYSQL_DB; CREATE DATABASE $LOCAL_MYSQL_DB;'"
   CMD="$CMD && $LOCAL_MYSQL_CONNECT $LOCAL_MYSQL_DB < $FILENAME"
+  CMD="$CMD && echo '${green}Pulled${reset}'"
   eval $CMD
 
-  CMD="rm $FILENAME"
+  CMD="rm -f $FILENAME"
   eval $CMD
 }
 
