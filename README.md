@@ -14,8 +14,9 @@ To activate helpers you can use `source [helper]`.
 
 ## Mysqlpull
 
-Bash utility for pulling databases from remote hosts.
+Bash utility for pulling databases from remote hosts.  
 Inspired by https://github.com/loganstellway/mysqldump-remote
+
 More details:
 ```bash
 $ mysqlpull --help
