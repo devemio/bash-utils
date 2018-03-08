@@ -2,12 +2,14 @@
 
 # Inspired by https://github.com/loganstellway/mysqldump-remote
 
-LOCAL_MYSQL_HOST="localhost"
+LOCAL_MYSQL_HOST="127.0.0.1"
+LOCAL_MYSQL_PORT="3306"
 LOCAL_MYSQL_USER="root"
 LOCAL_MYSQL_PWD=""
 LOCAL_MYSQL_DB=""
 
-REMOTE_MYSQL_HOST="localhost"
+REMOTE_MYSQL_HOST="127.0.0.1"
+REMOTE_MYSQL_PORT="3306"
 REMOTE_MYSQL_USER="root"
 REMOTE_MYSQL_PWD=""
 REMOTE_MYSQL_DB=""
@@ -37,11 +39,13 @@ help() {
   $SCRIPT_NAME [options]
 
 ${yellow}Options:${reset}
-  ${green}-h, --local-mysql-host${reset}       Database host on the local machine ${yellow}[default: \"localhost\"]${reset}
+  ${green}-h, --local-mysql-host${reset}       Database host on the local machine ${yellow}[default: \"127.0.0.1\"]${reset}
+  ${green}-P, --local-mysql-port${reset}       Database port on the local machine ${yellow}[default: 3306]${reset}
   ${green}-u, --local-mysql-user${reset}       Database user on the local machine ${yellow}[default: \"root\"]${reset}
   ${green}-p, --local-mysql-password${reset}   Database password on the local machine
   ${green}-d, --local-mysql-database${reset}   Database name on the local machine
-  ${green}    --remote-mysql-host${reset}      Database host on the remote machine ${yellow}[default: \"localhost\"]${reset}
+  ${green}    --remote-mysql-host${reset}      Database host on the remote machine ${yellow}[default: \"127.0.0.1\"]${reset}
+  ${green}    --remote-mysql-port${reset}      Database port on the remote machine ${yellow}[default: 3306]${reset}
   ${green}    --remote-mysql-user${reset}      Database user on the remote machine ${yellow}[default: \"root\"]${reset}
   ${green}    --remote-mysql-password${reset}  Database password on the remote machine
   ${green}    --remote-mysql-database${reset}  Database name on the remote machine
@@ -64,10 +68,12 @@ while [ "$1" != "" ]; do
   case $PARAM in
     --help) help; exit ;;
     -h|--local-mysql-host) LOCAL_MYSQL_HOST=$VALUE ;;
+    -P|--local-mysql-port) LOCAL_MYSQL_PORT=$VALUE ;;
     -u|--local-mysql-user) LOCAL_MYSQL_USER=$VALUE ;;
     -p|--local-mysql-password) LOCAL_MYSQL_PWD=$VALUE ;;
     -d|--local-mysql-database) LOCAL_MYSQL_DB=$VALUE ;;
     --remote-mysql-host) REMOTE_MYSQL_HOST=$VALUE ;;
+    --remote-mysql-port) REMOTE_MYSQL_PORT=$VALUE ;;
     --remote-mysql-user) REMOTE_MYSQL_USER=$VALUE ;;
     --remote-mysql-password) REMOTE_MYSQL_PWD=$VALUE ;;
     --remote-mysql-database) REMOTE_MYSQL_DB=$VALUE ;;
@@ -131,8 +137,8 @@ validate() {
 run() {
   FILENAME="$DIR/db.sql"
   SSH_CMD="ssh $SSH_VERBOSE $SSH_KEY $SSH_USER$SSH_HOST $SSH_PORT"
-  LOCAL_MYSQL_CONNECT="mysql $MYSQL_VERBOSE -h $LOCAL_MYSQL_HOST -u $LOCAL_MYSQL_USER $LOCAL_MYSQL_PWD"
-  REMOTE_MYSQL_DUMP="mysqldump $MYSQL_VERBOSE -h $REMOTE_MYSQL_HOST -u $REMOTE_MYSQL_USER $REMOTE_MYSQL_PWD $REMOTE_MYSQL_DB"
+  LOCAL_MYSQL_CONNECT="mysql $MYSQL_VERBOSE -h $LOCAL_MYSQL_HOST -P $LOCAL_MYSQL_PORT -u $LOCAL_MYSQL_USER $LOCAL_MYSQL_PWD"
+  REMOTE_MYSQL_DUMP="mysqldump $MYSQL_VERBOSE -h $REMOTE_MYSQL_HOST -P $REMOTE_MYSQL_PORT -u $REMOTE_MYSQL_USER $REMOTE_MYSQL_PWD $REMOTE_MYSQL_DB"
 
   CMD="$SSH_CMD '$REMOTE_MYSQL_DUMP | gzip -c' | gunzip > $FILENAME"
   CMD="$CMD && $LOCAL_MYSQL_CONNECT -e 'DROP DATABASE IF EXISTS $LOCAL_MYSQL_DB; CREATE DATABASE $LOCAL_MYSQL_DB;'"
