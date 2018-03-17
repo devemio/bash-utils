@@ -3,3 +3,7 @@
 ci() {
     git add . && git commit -m "$*"
 }
+
+cip() {
+    git add . && git commit -m "$*" && git push
+}
