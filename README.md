@@ -39,7 +39,24 @@ cip Commit message
 
 Move remote existing tag `0.1.0` to `HEAD` and push it
 ```bash
-gmt 0.1.0
+git-move-tag 0.1.0
+```
+
+## Colored docker
+
+Call `docker images`
+```bash
+di
+```
+
+Call `docker ps`
+```bash
+dps
+```
+
+Call `docker-compose ps`
+```bash
+dcps
 ```
 
 ## Mysqlpull
