@@ -1,23 +1,51 @@
 # Bash Helpers
 
-To activate helpers you can use `source [helper]`.
+Add the following to `.bashrc` or `.zshrc` file
+```bash
+source ~/helpers/all
+```
 
-## Tunnel
+## SSH tunnels
 
-* To show the list of active tunnels you can use `tunnel ls`
-* To kill all active tunnels you can use `tunnel kill`
-* To create tunnels you can use `tunnel 13306:localhost:3306 root@example.com`
+Create tunnel
+```bash
+# localhost:13306
+tunnel 13306:localhost:3306 ubuntu@remote.com
+```
+
+Active tunnels
+```bash
+tunnel ls
+```
+
+Kill all tunnels
+```bash
+tunnel kill
+```
 
 ## Git
 
-* To commit all changes with message without the quotes you can use `ci Commit message`
+Commit all changes
+```bash
+# git add . && git commit -m 'Commit message'
+ci Commit message
+```
+
+Commit all changes and push them
+```bash
+# git add . && git commit -m 'Commit message' && git push
+cip Commit message
+```
+
+Move remote existing tag `0.1.0` to `HEAD` and push it
+```bash
+gmt 0.1.0
+```
 
 ## Mysqlpull
 
 Bash utility for pulling databases from remote hosts.  
 Inspired by https://github.com/loganstellway/mysqldump-remote
-
-More details:
 ```bash
-$ mysqlpull --help
+mysqlpull --help
 ```
