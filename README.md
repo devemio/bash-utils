@@ -1,7 +1,6 @@
-# Bash Helpers
+# Bash helpers
 
-Clone the repo into `~/helpers`.  
-Add the following to `.bashrc` or `.zshrc` file.
+Clone the repo into `~/helpers`. Add the following to `.bashrc` or `.zshrc` file.
 ```bash
 source ~/helpers/all
 ```
