@@ -44,17 +44,17 @@ git-move-tag 0.1.0
 
 ## Colored docker
 
-Call `docker images`
+Execute `docker images`
 ```bash
 di
 ```
 
-Call `docker ps`
+Execute `docker ps`
 ```bash
 dps
 ```
 
-Call `docker-compose ps`
+Execute `docker-compose ps`
 ```bash
 dcps
 ```
