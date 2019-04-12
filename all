@@ -1,6 +1,5 @@
 #!/bin/bash
 
 source ./git
-source ./docker
 source ./tunnel
 source ./mysqlpull
