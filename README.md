@@ -45,22 +45,9 @@ Move remote existing tag `0.1.0` to `HEAD` and push it
 git-move-tag 0.1.0
 ```
 
-## Colored docker
+## Docker color output
 
-Execute `docker images`
-```bash
-di
-```
-
-Execute `docker ps`
-```bash
-dps
-```
-
-Execute `docker-compose ps`
-```bash
-dcps
-```
+Moved to https://github.com/devemio/docker-color-output.
 
 ## Mysqlpull
 
