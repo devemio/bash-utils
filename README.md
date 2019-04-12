@@ -11,7 +11,7 @@ Create tunnel
 ```bash
 # localhost:13306
 
-tunnel 13306:localhost:3306 ubuntu@remote.com
+tunnel 13306:localhost:3306 ubuntu@remote.host
 ```
 
 Active tunnels
