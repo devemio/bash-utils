@@ -48,7 +48,7 @@ git-move-tag 0.1.0
 ## MySQL
 
 Bash utility for pulling databases from remote hosts.  
-Inspired by https://github.com/loganstellway/mysqldump-remote.
+> Inspired by https://github.com/loganstellway/mysqldump-remote.
 ```bash
 mysqlpull --help
 ```
