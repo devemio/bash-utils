@@ -5,11 +5,11 @@ Clone the repo into `~/helpers`. Add the following to `.bashrc` or `.zshrc` file
 source ~/helpers/all
 ```
 
-## SSH tunnels
+## SSH Tunnels
 
 Create tunnel
 ```bash
-# localhost:13306
+# localhost:13306 => localhost:3306 on remote.host
 
 tunnel 13306:localhost:3306 ubuntu@remote.host
 ```
@@ -45,11 +45,7 @@ Move remote existing tag `0.1.0` to `HEAD` and push it
 git-move-tag 0.1.0
 ```
 
-## Docker color output
-
-Moved to https://github.com/devemio/docker-color-output.
-
-## Mysqlpull
+## MySQL
 
 Bash utility for pulling databases from remote hosts.  
 Inspired by https://github.com/loganstellway/mysqldump-remote.
