@@ -1,4 +1,4 @@
-# Bash helpers
+# Bash Utils
 
 Clone the repo into `~/helpers`. Add the following to `.bashrc` or `.zshrc` file.
 ```bash
