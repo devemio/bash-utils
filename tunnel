@@ -3,7 +3,7 @@
 tunnel() {
     case "$1" in
         ls)
-            ps aux | grep 'ssh -fNL' | grep -v 'exclude-dir' | awk '{print $13" "$14}' | uniq
+            ps aux | grep 'ssh -fNL' | grep -v 'exclude-dir' | awk '{split($13, x, ":"); print "\033[32m"x[1]"\033[0m ✨","\033[33m"$14"\033[0m","🔅 "x[2]":"x[3]}' | uniq
             ;;
         kill)
             ps aux | grep 'ssh -fNL' | grep -v 'exclude-dir' | awk '{print $2}' | xargs kill
